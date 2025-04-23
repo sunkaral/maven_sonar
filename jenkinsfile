@@ -1,7 +1,7 @@
 pipeline {
     agent any
     tools {
-        maven 'maven'
+        maven 'maven3'
     }
     
     stages {
@@ -26,7 +26,7 @@ pipeline {
         stage('SonarQube Analysis') {
             environment {
                 SONAR_HOST_URL = 'http://13.48.190.252:9000' // Replace with your SonarQube URL
-                SONAR_AUTH_TOKEN = credentials('sonar-token') // Store your token in Jenkins credentials
+                SONAR_AUTH_TOKEN = credentials('sonar-token1') // Store your token in Jenkins credentials
             }
             steps {
                 sh 'mvn sonar:sonar -Dsonar.projectKey=sample_project -Dsonar.host.url=$SONAR_HOST_URL -Dsonar.login=$SONAR_AUTH_TOKEN'
